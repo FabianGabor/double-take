@@ -165,7 +165,8 @@ module.exports.frigate = ({ id, camera, topic }) => {
   _.mergeWith(image, events?.[camera]?.image || {}, customizer);
   _.mergeWith(attempts, events?.[camera]?.attempts || {}, customizer);
 
-  const useCrop = masks(camera) || crop_snapshot(camera) ? '' : '&crop=1';
+  // const useCrop = masks(camera) || crop_snapshot(camera) ? '' : '&crop=1';
+  const useCrop = '&crop=1';
   const snapshot = `${topicURL(topic)}/api/events/${id}/snapshot.jpg?h=${image.height}${useCrop}`;
 
   const latest = image.latest || `${topicURL(topic)}/api/${camera}/latest.jpg?h=${image.height}`;
